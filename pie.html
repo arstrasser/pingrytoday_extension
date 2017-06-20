@@ -1,0 +1,68 @@
+<html>
+<body style="background-color:white;">
+<head>
+	<link rel="stylesheet" href="pie.css">
+</head>
+
+<body>
+
+	<script src="jquery.min.js"></script>
+	<script src="https://platform.twitter.com/widgets.js"></script>
+	<script src="background.js"></script>
+	<script src="widget.js"></script>
+	
+	<meta name="twitter:widgets:csp" content="on">
+
+	<div class='init'>
+		<div id="tab" tabindex="0"></div>
+		<img class="pingry"/>
+		<img id="lunch" class="lunch"/>
+		<div id="anchor">
+			<svg height="7vw" width="7vw">
+				<a href="https://www.pingry.org/pingrytoday" class="circle">
+					<circle id="circle" cx="3.5vw" cy="3.5vw" r="3.5vw" stroke="black" stroke-width="1" fill="red"/>
+				</a>
+			</svg>
+		</div>
+		<div id="bookmark_shelf">
+			<div id="toggle" title="toggle bookmark bar"></div>
+			<img id="button_back" class="button_back"/>
+			<img id="button_back" class="button_front"/>
+			<iframe id="bookmark_bar" style="border: none" scrolling="yes" src=bookmarks.html></iframe>
+		</div>
+		
+		<iframe id="menu" src="http://www.sagedining.com/menus/pingry" style="-webkit-transform:scale(0.75); transform-origin: 0 0;"></iframe>
+		<h1>
+			<div class="greeting"></div>
+		</h1>
+		<h2>
+			<div id="time"></div>
+		</h2>
+		<h3>
+			<div id="date"></div>
+		</h3>
+		<h4>
+			<div id= "letterDay"></div>
+		</h4>
+		<h5>
+			<div id = "classes"></div>
+		</h5>
+		
+		<img class = "stage1"/>
+		<img class = "pingry"/>
+		<img class = "loading"/>
+		<img class = "error"/>
+	<h2>
+		<div id="time"></div>
+	</h2>
+	<h3>
+		<div id="date"></div>
+	</h3>
+		<div class = 'twitter'>
+			<a class="twitter-timeline" href="https://twitter.com/ThePingrySchool" data-widget-id="720453719423381504" height = "30vw"></a>
+		</div>	
+
+	</div>
+
+</body>
+</html>

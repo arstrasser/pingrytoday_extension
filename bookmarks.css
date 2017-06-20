@@ -1,0 +1,14 @@
+html, body {
+    background-color: none;
+    height: 100%;
+    width: 100%;
+    overflow-y: hidden;
+    margin: 0;
+    padding-right: 10;
+}
+
+
+
+::-webkit-scrollbar { 
+    display: none; 
+}

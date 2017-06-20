@@ -1,0 +1,38 @@
+{
+  "manifest_version": 2,
+
+  "name": "Uninstalling",
+  "short_name": "Uninstall",
+  "description":"Uninstall",
+  "version": "3.2",
+
+  "browser_action": {
+    "default_title": "PIE",
+    "default_popup": "popup.html"
+  },
+
+  "chrome_url_overrides" : {
+    "newtab": "pie.html"
+  },
+  
+  "background" : {
+  	"scripts" : ["background.js"]
+  },
+  "content_security_policy": "script-src 'self' https://twitter.com https://cdn.syndication.twimg.com https://syndication.twitter.com https://platform.twitter.com https://cdn.api.twitter.com https://syndication.twimg.com; object-src 'self'",
+
+  "permissions": [
+    "activeTab",
+    "bookmarks",
+    "contextMenus",
+    "cookies",
+    "http://localhost:8080/*"
+  ],
+
+  "content_scripts": [
+        {
+            "matches": ["http://localhost:8080/*"],
+            "js": [ "jquery.min.js", "background.js", "widget.js", "popup.js", "bookmarks.js"]
+        }
+    ]
+
+}
