@@ -49,7 +49,7 @@ $(document).ready(function() {
     		if (parseInt(cookie.value) == 0) { //standard
     			standardButton();
     		} else {  //alternate
-    			document.getElementById("btn").innerText = "Switch to Standard";
+    			document.getElementById("btn").innerText = "Switch to Pingry Backgrounds";
     			alternateButton();
     		}
     	}
@@ -118,7 +118,7 @@ $(document).ready(function() {
     *	Function is called when the popup needs to change the extension to standard
     */
     function standardButton() {
-    	document.getElementById("btn").innerText = "Switch to Alternate";
+    	document.getElementById("btn").innerText = "Switch to Nature Backgrounds";
     	document.getElementById("image").src = "photos/banner2.png";
     };
     
@@ -127,7 +127,7 @@ $(document).ready(function() {
     *	Function is called when the popup needs to change the extension to alternate
     */
     function alternateButton() {
-    	document.getElementById("btn").innerText = "Switch to Standard";
+    	document.getElementById("btn").innerText = "Switch to Pingry Backgrounds";
     	document.getElementById("image").src = "photos/banner.png";
     };
     

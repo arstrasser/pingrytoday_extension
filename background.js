@@ -1,12 +1,40 @@
-alert("Thank you for using Pingry PIE. The extension will be available again after the summer.");
-
-chrome.management.uninstallSelf();
-
 /**
+*	Opens demo.html and a new tab on install
+*	50/50 chance of starting with either pingry or nature backgrounds
+*/
+	chrome.runtime.onInstalled.addListener(function (object) {
+   		
+    	if(object.reason === 'install')
+    	{ 		
+    		chrome.tabs.create({'url': chrome.extension.getURL('demo.html')}, function(tab) { });
+    		
+    		chrome.tabs.create({'active': false}, function(tab) { });
+    		
+    		var randomVal = (Math.floor(Math.random() * 2)).toString();   //either 0 or 1
+    		console.log("INSTALLED with variable " + randomVal);
+
+			chrome.cookies.set({
+				name: "background_set",
+				value: randomVal,
+				url:"http://localhost:8080",
+				expirationDate: Date.now() + 126227808000  //4 years
+			}, function(cookie) {
+				console.log(cookie);
+				console.log("background_set cookie created w/ value " + randomVal);
+			});
+			
+    	}
+    	
+	});
+
+
+
+/*
 *	Brendan Raimann
 */
 
 $(document).ready(function(){
+
 
 	$(document.body).css("background-size", "cover");
 	
@@ -141,13 +169,13 @@ $(document).ready(function(){
 		if (cookie == null) {
 			chrome.cookies.set({
 			name: "background_set",
-			value: "1",
+			value: "0",
 			url:"http://localhost:8080",
 			expirationDate: Date.now() + 126227808000  //4 years
 			}, function(cookie) {
 				console.log(cookie);
-				console.log("background_set cookie created w/ value 1");
-				backgroundManager("1");
+				console.log("background_set cookie created w/ value 0");
+				backgroundManager("0");
 			});
 		}
 		else {

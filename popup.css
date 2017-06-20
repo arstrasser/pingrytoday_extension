@@ -25,9 +25,9 @@ html, body {
 	-webkit-user-select:none;
 	position: absolute;
 	color: #FFF;
-	font-size: 25;
-	top: 25px;
-	left: 115px;
+	font-size: 20;
+	top: 30px;
+	left: 95px;
 	padding: 5px 10px;
 	margin: 2;
 	background: rgba(68, 121, 186, .9);

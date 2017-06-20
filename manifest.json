@@ -1,10 +1,10 @@
 {
   "manifest_version": 2,
 
-  "name": "Uninstalling",
-  "short_name": "Uninstall",
-  "description":"Uninstall",
-  "version": "3.2",
+  "name": "Pingry Information and Essentials (PIE)",
+  "short_name": "PIE",
+  "description":"A layout for your new tab page that fills you in on some Pingry news and information.",
+  "version": "4.0",
 
   "browser_action": {
     "default_title": "PIE",
@@ -16,9 +16,15 @@
   },
   
   "background" : {
-  	"scripts" : ["background.js"]
+  	"scripts" : ["background.js"],
+  	"persistent": false
   },
   "content_security_policy": "script-src 'self' https://twitter.com https://cdn.syndication.twimg.com https://syndication.twitter.com https://platform.twitter.com https://cdn.api.twitter.com https://syndication.twimg.com; object-src 'self'",
+  
+  "icons": { 
+  	"128": "photos/_standard/PIE-128.png",
+     "48": "photos/_standard/PIE-48.png",
+     "16": "photos/_standard/PIE-16.png" },
 
   "permissions": [
     "activeTab",

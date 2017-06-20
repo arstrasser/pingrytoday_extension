@@ -1,0 +1,55 @@
+<html>
+
+	<head>
+	<title>Tutorial</title>
+	</head>
+	
+	<body>
+		<h1>Thanks for installing Pingry Today!</h1>
+		<h2>Click the icon to switch backgrounds</h2>
+		
+		<img id="demo" src="photos/demo.gif">
+		
+	</body>
+	<style>
+	
+		html, body {
+			position: fixed; 
+			overflow: hidden;
+			width: 100%;
+			margin: 0%;
+			background: linear-gradient(to top right, #004C98, #42A6A9);
+			height: 100%;
+			background-repeat: no-repeat;
+			-webkit-overflow-scrolling: touch; /* Chrome/Safari */
+		}
+		
+		h1, h2 {
+			font-family: "Gulim", Times, serif;
+			font-size: 30px;
+			font-weight: bold;
+			text-align: center;
+			cursor: default;
+			-webkit-user-select: none; /* Chrome/Safari */
+		}
+		
+		h1 {
+			font-size: 50px;
+		}
+		
+		h2 {
+			font-size: 30px;
+			color: #002952;
+		}
+		
+		#demo {
+			position: absolute;
+			width: 60%;
+			left: 20%;
+			top: 130px;
+			border-radius: 10px;
+			z-index: -1;
+		}
+		
+	</style>
+</html>
