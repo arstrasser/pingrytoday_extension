@@ -49,6 +49,7 @@ html, body {
 	height: 7vw;
 	width: 7vw;
 	z-index: 5;
+	image-rendering: crisp-edges !important;
 }
 
 #circle {
@@ -63,7 +64,41 @@ html, body {
 	height: 55px;
 	width: 180px;
 	z-index: 5;
+	opacity: 0.7;
 }
+
+.lunch_overlay {
+	content: url("photos/lunch_overlay.png");
+	position: absolute;
+	right: 10px;
+	bottom: 0px;
+	height: 55px;
+	width: 180px;
+	z-index: 4;
+}
+
+.US_announcements {
+	content: url("photos/US_announcements.png");
+	position: absolute;
+	left: 10px;
+	bottom: 0px;
+	height: 55px;
+	width: 180px;
+	z-index: 5;
+	opacity: 0.7;
+}
+
+.US_announcements_overlay {
+	content: url("photos/US_announcements_overlay.png");
+	position: absolute;
+	left: 10px;
+	bottom: 0px;
+	height: 55px;
+	width: 180px;
+	z-index: 4;
+}
+
+
 
 h1 {
 	font-size: 4vw;
@@ -115,7 +150,7 @@ h5 {
 	z-index: 2;
 }
 
-
+/*
 .twitter {
 	position: absolute;
 	width: 80px;
@@ -154,15 +189,35 @@ h5 {
 	bottom: 10px;
 	z-index: 4;
 }
+*/
 
-#menu {
+#container {
+	overflow: scroll;
 	position: absolute;
 	height: 53.33vw;
 	width: 39vw;
 	min-width: 250;
-	-webkit-border-radius: 12px;
-	border-radius: 12px;
+	border-radius: 5px;
 	z-index: 5;
+	text-align: center;
+	
+}
+
+#menu {
+	margin: 0 auto;
+	height: 100%;
+	width: 980px;
+	border: none;
+}
+
+#iframe_announcements {
+	position: absolute;
+	height: 53.33vw;
+	width: 29.2vw;
+	min-width: 190.5;
+	z-index: 5;
+	border: none;
+	border-radius: 5px;
 }
 
 #toggle {

@@ -1,3 +1,5 @@
+
+
 /**
 *	Opens demo.html and a new tab on install
 *	50/50 chance of starting with either pingry or nature backgrounds
@@ -26,6 +28,15 @@
     	}
     	
 	});
+
+
+
+
+
+
+
+
+
 
 
 
@@ -85,43 +96,75 @@ $(document).ready(function(){
 
 
 	/**
-	*	Places the menu and bookmark_bar correctly in the window
+	*	Places the container and bookmark_bar correctly in the window
 	*/
 	
 	document.getElementById("bookmark_bar").width = 
 		parseInt(window.getComputedStyle(document.getElementById('bookmark_shelf')).getPropertyValue('width')) - 30;
-	$(document.getElementById("menu")).css("visibility","hidden");
-	if (document.getElementById('menu').clientWidth == 250)
-		$(document.getElementById('menu')).css({"right":"-63","bottom":"-13.5vw"});
+	
+	$(document.getElementById("container")).fadeOut(200);
+		
+	if (document.getElementById('container').clientWidth <= 385)
+			$(document.getElementById('container')).scrollLeft(300);
+		else
+			$(document.getElementById('container')).scrollLeft((980 - $(document.getElementById('container')).width())/2);
+	
+	
+	if (document.getElementById('container').clientWidth == 250)
+		$(document.getElementById('container')).css({"right":"-62.5","bottom":"-13.5vw"});
 	else
-		$(document.getElementById('menu')).css({"right":"-9.9vw","bottom":"-13.5vw"});
+		$(document.getElementById('container')).css({"right":"-9.8vw","bottom":"-13.5vw"});
+	
+	
+	$(document.getElementById("iframe_announcements")).fadeOut(200);
+	$(document.getElementById('iframe_announcements')).css({"left":"0","bottom":"-13.5vw"});
 
 	/**
-	*	Maintains the correct position for the menu and bookmark_bar
+	*	Maintains the correct position for the container and bookmark_bar
 	*/
 	$(window).resize(function() {
 		document.getElementById("bookmark_bar").width = 
 			parseInt(window.getComputedStyle(document.getElementById('bookmark_shelf')).getPropertyValue('width')) - 30;
-		if (document.getElementById('menu').clientWidth == 250)
-			$(document.getElementById('menu')).css("right","-63");
+		
+		if (document.getElementById('container').clientWidth <= 385)
+			$(document.getElementById('container')).scrollLeft(300);
 		else
-			$(document.getElementById('menu')).css("right","-9.9vw");
+			$(document.getElementById('container')).scrollLeft((980 - $(document.getElementById('container')).width())/2);
+		
+		
+		if (document.getElementById('container').clientWidth == 250)
+			$(document.getElementById('container')).css("right","-62.5");
+		else
+			$(document.getElementById('container')).css("right","-9.8vw");
+		
 	});
 
 	/**
 	*	Event Listeners to make the Lunch Menu tab work
 	*/
 	$(document.getElementById("lunch").addEventListener("mouseover", mouseOver));
-	$(document.getElementById("menu").addEventListener("mouseout", mouseOut));
+	$(document.getElementById("container").addEventListener("mouseout", mouseOut));
 	
 	function mouseOver() {
-		$(document.getElementById("menu")).css("visibility","visible");
-		$(document.getElementById("lunch")).css("visibility","hidden");
+		$(document.getElementById("container")).fadeIn(300);
 	}
 	
 	function mouseOut() {
-		$(document.getElementById("menu")).css("visibility","hidden");
-		$(document.getElementById("lunch")).css("visibility","visible");
+		$(document.getElementById("container")).fadeOut(200);
+	}
+	
+	/**
+	*	Event Listeners to make the Announcements tab work
+	*/
+	$(document.getElementById("US_announcements").addEventListener("mouseover", mouseOver2));
+	$(document.getElementById("iframe_announcements").addEventListener("mouseout", mouseOut2));
+	
+	function mouseOver2() {
+		$(document.getElementById("iframe_announcements")).fadeIn(400);
+	}
+	
+	function mouseOut2() {
+		$(document.getElementById("iframe_announcements")).fadeOut(200);
 	}
 	
 	/**
@@ -138,9 +181,11 @@ $(document).ready(function(){
 	});
 	
 	
-	//chrome.contextMenus.onClicked.addListener
-	
-	//chrome.cookies.remove({url:"http://localhost:8080", name:"bookmark_toggle"});
+	/**
+	*	Searches for the cookie that toggles the bookmark bar
+	*	Creates the cookie if it doesn't exist
+	*	calls bookmarkManager(val) when it's found
+	*/
 	chrome.cookies.get({name:"bookmark_toggle", url:"http://localhost:8080"}, function(cookie) {
 		if (cookie == null) {
 			chrome.cookies.set({
@@ -182,8 +227,6 @@ $(document).ready(function(){
 			//console.log("cookie exists \t value = " + cookie.value);
 			//console.log(cookie);
 			backgroundManager(cookie.value);
-			console.log(cookie);
-			console.log(cookie.value);
 		}
    	});
    	
@@ -247,14 +290,12 @@ $(document).ready(function(){
    	*	Deletes the appropriate bookmark when the "delete" option is clicked
    	*/
    	chrome.contextMenus.onClicked.addListener(function(info) {
+   		console.log(info.menuItemId);
    		if (info.menuItemId === "delete") {
    			console.log(info);
    			chrome.bookmarks.search(info.linkUrl, function(results) {
    				chrome.bookmarks.remove(results[0].id);
    			});
-   		}
-   		else {
-   			//console.log("add was pressed");
    		}
    	});
 });

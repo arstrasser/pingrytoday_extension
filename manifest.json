@@ -1,13 +1,13 @@
 {
   "manifest_version": 2,
 
-  "name": "Pingry Information and Essentials (PIE)",
-  "short_name": "PIE",
-  "description":"A layout for your new tab page that fills you in on some Pingry news and information.",
-  "version": "4.0",
+  "name": "Pingry Today",
+  "short_name": "Pingry Today",
+  "description":"A layout for your new tab page that fills you in on Pingry news and information.",
+  "version": "5.1",
 
   "browser_action": {
-    "default_title": "PIE",
+    "default_title": "Pingry Today",
     "default_popup": "popup.html"
   },
 
@@ -19,7 +19,7 @@
   	"scripts" : ["background.js"],
   	"persistent": false
   },
-  "content_security_policy": "script-src 'self' https://twitter.com https://cdn.syndication.twimg.com https://syndication.twitter.com https://platform.twitter.com https://cdn.api.twitter.com https://syndication.twimg.com; object-src 'self'",
+  "content_security_policy": "script-src 'self'; object-src 'self';",
   
   "icons": { 
   	"128": "photos/_standard/PIE-128.png",
@@ -31,13 +31,15 @@
     "bookmarks",
     "contextMenus",
     "cookies",
+    "https://www.pingry.org/*",
+    "https://www.sagedining.com/*",
     "http://localhost:8080/*"
   ],
 
   "content_scripts": [
         {
-            "matches": ["http://localhost:8080/*"],
-            "js": [ "jquery.min.js", "background.js", "widget.js", "popup.js", "bookmarks.js"]
+            "matches": ["http://localhost:8080/*", "https://www.pingry.org/*"],
+            "js": [ "jquery.min.js", "background.js", "widget.js", "popup.js", "US_announcements.js", "bookmarks.js"]
         }
     ]
 
