@@ -23,12 +23,13 @@ $(document).ready(function(){
 		chrome.bookmarks.getChildren(id, function(children) {
 			children.forEach(function(bookmark) {
 	   			if (bookmark.url != undefined)
-				bookmarks.push([bookmark.title, bookmark.url, bookmark.id]); //bookmarks[i][0-2] return title, url, and id
-				fillBookmarks(bookmark.id);
+					bookmarks.push([bookmark.title, bookmark.url, bookmark.id]); //bookmarks[i][0-2] return title, url, and id
+				else
+					fillBookmarks(bookmark.id);
 			});
 			execute();
 		});
-	}
+	};
 	
 	/**
 	*	Creates all of the bookmarks and puts them onto bookmarks.html

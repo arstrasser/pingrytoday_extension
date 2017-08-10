@@ -4,7 +4,7 @@
   "name": "Pingry Today",
   "short_name": "Pingry Today",
   "description":"A layout for your new tab page that fills you in on Pingry news and information.",
-  "version": "5.1",
+  "version": "5.3",
 
   "browser_action": {
     "default_title": "Pingry Today",

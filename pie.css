@@ -150,47 +150,6 @@ h5 {
 	z-index: 2;
 }
 
-/*
-.twitter {
-	position: absolute;
-	width: 80px;
-	height: 300px;
-	left: 10px;
-	bottom: -245px;
-	z-index: 6;
-}
-
-.twitter:hover{
-	position: absolute;
-	width: 17vw;
-	height: 23vw;
-	left: 10px;
-	bottom: 50px;
-	z-index: 6;
-}
-
-.loading {
-	content: url("photos/loading.png");
-	position: absolute;
-	width: 180px;
-	height: 55px;
-	left: 10px;
-	bottom: 0px;
-	z-index: 4;
-}
-
-.error {
-	content: url("photos/error.png");
-	position: absolute;
-	opacity: 1;
-	width: 35px;
-	height: 35px;
-	left: 140px;
-	bottom: 10px;
-	z-index: 4;
-}
-*/
-
 #container {
 	overflow: scroll;
 	position: absolute;

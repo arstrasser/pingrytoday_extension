@@ -1,4 +1,10 @@
 
+/*
+*	Brendan Raimann
+*/
+
+
+
 
 /**
 *	Opens demo.html and a new tab on install
@@ -13,7 +19,7 @@
     		chrome.tabs.create({'active': false}, function(tab) { });
     		
     		var randomVal = (Math.floor(Math.random() * 2)).toString();   //either 0 or 1
-    		console.log("INSTALLED with variable " + randomVal);
+    		//console.log("INSTALLED with variable " + randomVal);
 
 			chrome.cookies.set({
 				name: "background_set",
@@ -35,14 +41,6 @@
 
 
 
-
-
-
-
-
-/*
-*	Brendan Raimann
-*/
 
 $(document).ready(function(){
 
@@ -102,13 +100,12 @@ $(document).ready(function(){
 	document.getElementById("bookmark_bar").width = 
 		parseInt(window.getComputedStyle(document.getElementById('bookmark_shelf')).getPropertyValue('width')) - 30;
 	
-	$(document.getElementById("container")).fadeOut(200);
-		
 	if (document.getElementById('container').clientWidth <= 385)
-			$(document.getElementById('container')).scrollLeft(300);
-		else
-			$(document.getElementById('container')).scrollLeft((980 - $(document.getElementById('container')).width())/2);
+		$(document.getElementById('container')).scrollLeft(300);
+	else
+		$(document.getElementById('container')).scrollLeft((980 - $(document.getElementById('container')).width())/2);
 	
+	$(document.getElementById("container")).fadeOut(0);
 	
 	if (document.getElementById('container').clientWidth == 250)
 		$(document.getElementById('container')).css({"right":"-62.5","bottom":"-13.5vw"});
@@ -116,7 +113,7 @@ $(document).ready(function(){
 		$(document.getElementById('container')).css({"right":"-9.8vw","bottom":"-13.5vw"});
 	
 	
-	$(document.getElementById("iframe_announcements")).fadeOut(200);
+	$(document.getElementById("iframe_announcements")).fadeOut(0);
 	$(document.getElementById('iframe_announcements')).css({"left":"0","bottom":"-13.5vw"});
 
 	/**
@@ -161,16 +158,20 @@ $(document).ready(function(){
 	
 	function mouseOver2() {
 		$(document.getElementById("iframe_announcements")).fadeIn(400);
+		$(document.getElementById("US_announcements")).fadeOut(200);
+		$(document.getElementById("US_announcements_overlay")).fadeOut(200);
 	}
 	
 	function mouseOut2() {
 		$(document.getElementById("iframe_announcements")).fadeOut(200);
+		$(document.getElementById("US_announcements")).fadeIn(200);
+		$(document.getElementById("US_announcements_overlay")).fadeIn(200);
 	}
 	
 	/**
 	* Disables tab indexing
 	*/
-	$('twitter').click(false);
+	
 	$(document).keydown(function (e) 
 	{
 		var keycode1 = (e.keyCode ? e.keyCode : e.which);
@@ -200,8 +201,6 @@ $(document).ready(function(){
 			});
 		}
 		else {
-			//console.log("cookie exists \t value = " + cookie.value);
-			//console.log(cookie);
 			bookmarkManager(cookie.value);
 		}
    	});
