@@ -4,21 +4,15 @@
 </head>
 
 <body style="background-color:white;">
-
-	<script src="jquery.min.js"></script>
-	<script src="background.js"></script>
-	<script src="widget.js"></script>
-	
-
 	<div class='init'>
 		<div id="tab" tabindex="0"></div>
-		<img class="pingry"/>
+		<div id="stage1"></div>
+		<img class="pingry" src="photos/pingry.png"/>
 		<img id="lunch" class="lunch"/>
 		<img id="lunch_overlay" class="lunch_overlay"/>
-		
-		<img id="US_announcements" class="US_announcements"/>
-		<img id="US_announcements_overlay" class="US_announcements_overlay"/>
 
+		<img id="US_announcements" src="photos/US_announcements.png"/>
+		<img id="US_announcements_overlay" src="photos/US_announcements_overlay.png"/>
 		<div id="anchor">
 			<svg height="7vw" width="7vw">
 				<a href="https://www.pingry.org/pingrytoday" class="circle">
@@ -26,37 +20,43 @@
 				</a>
 			</svg>
 		</div>
-		
+
 		<div id="bookmark_shelf">
 			<div id="toggle" title="toggle bookmark bar"></div>
 			<img id="button_back" class="button_back"/>
 			<img id="button_front" class="button_front"/>
-			<iframe id="bookmark_bar" style="border: none" scrolling="yes" src=bookmarks.html></iframe>
+			<iframe id="bookmark_bar" style="border: none" scrolling="yes" src="bookmarks.html"></iframe>
 		</div>
-		<div id="container" style="-webkit-transform:scale(0.75); transform-origin: 0 0;">
-		<iframe id="menu" src="http://www.sagedining.com/menus/pingry"></iframe>
-		</div>
-		<h1>
-			<div class="greeting"></div>
-		</h1>
-		<h2>
-			<div id="time"></div>
-		</h2>
-		<h3>
-			<div id="date"></div>
-		</h3>
-		<h4>
-			<div id= "letterDay"></div>
-		</h4>
-		<h5>
-			<div id = "classes"></div>
-		</h5>
 
-		<img class = "stage1"/>
-		<img class = "pingry"/>
-		
-		<iframe id="iframe_announcements" src=US_announcements.html scrolling="yes"</iframe>
+		<!-- Settings Icon SVG -->
+		<svg id="settingsIcon" fill="#000000" height="48" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg">
+		    <path d="M0 0h24v24H0z" fill="none"/>
+		    <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" fill="white"/>
+		</svg>
+		<div id="settingsMenu" style="opacity: 0">
+			<div id="wrapper">
+				<div id="header">
+					<div id="tab" tabindex="0"></div>
+					<img id="image" class="banner">
+					<div class="btn" id="changeBackgroundBtn" font size="20" type="button"></div>
+				</div>
+			</div>
+		</div>
+
+
+		<div id="container" style="-webkit-transform:scale(0.75); transform-origin: 0 0; overflow:hidden">
+			<iframe id="menu" src="http://www.sagedining.com/menus/pingry"></iframe>
+		</div>
+
+		<div class="greeting"></div>
+		<div id="time"></div>
+		<div id="date"></div>
+		<div id="letterDay"></div>
+		<div id="classes"></div>
+
+		<iframe id="iframe_announcements" src="US_announcements.html" scrolling="yes"></iframe>
 	</div>
-
+	<script src="background.js"></script>
+	<script src="widget.js"></script>
 </body>
 </html>
