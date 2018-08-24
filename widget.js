@@ -8,13 +8,22 @@
 *  Sets the correct background set
 */
 function backgroundManager(value) {
+  //TODO: remove this temporary section
+  standardButton();
+  document.body.style.backgroundImage =  "url('photos/_standard/Image1.jpg')";
+  return;
+
+
+
   if (parseInt(value) == 0){
+    standardButton();
     document.body.style.backgroundImage =  "url('photos/_standard/Image" + (~~(Math.random() * 20) + 1) + ".jpg')";
     chrome.browserAction.setIcon({
          path : "photos/_standard/PIE-16.png"
     });
   }
   else {
+    alternateButton();
     document.body.style.backgroundImage = "url('photos/_alternate/Image" + (~~(Math.random() * 23) + 1) + ".jpg')";
     chrome.browserAction.setIcon({
          path : "photos/_alternate/PIE-16.png"
@@ -52,10 +61,10 @@ chrome.cookies.get({name:"bookmark_toggle", url:"http://localhost:8080"}, functi
 chrome.cookies.get({name:"background_set", url:"http://localhost:8080"}, function(cookie) {
   if (cookie == null) {
     chrome.cookies.set({
-    name: "background_set",
-    value: "0",
-    url:"http://localhost:8080",
-    expirationDate: Date.now() + 126227808000  //4 years
+      name: "background_set",
+      value: "0",
+      url:"http://localhost:8080",
+      expirationDate: Date.now() + 126227808000  //4 years
     }, function(cookie) {
       backgroundManager("0");
     });
@@ -183,29 +192,6 @@ document.getElementById("settingsIcon").addEventListener("click", function(){
     setTimeout(function(){currentStyle.opacity = 1;});
   }
 })
-/**
-*  Function is called when the popup is loaded
-*  Sets the text on the button and the banner behind it (by calling standardButton() or alternateButton())
-*/
-chrome.cookies.get({name:"background_set", url:"http://localhost:8080"}, function(cookie) {
-if (cookie == null) {
-  chrome.cookies.set({
-  name: "background_set",
-  value: "0",
-  url:"http://localhost:8080",
-  expirationDate: Date.now() + 126227808000  //4 years
-    });
-  } else {
-    if (parseInt(cookie.value) == 0) { //standard
-      standardButton();
-    } else {  //alternate
-      document.getElementById("changeBackgroundBtn").innerText = "Switch to Pingry Backgrounds";
-      alternateButton();
-    }
-  }
-});
-
-
 
 /**
 *  Function is called when the button is clicked
@@ -215,38 +201,21 @@ if (cookie == null) {
 */
 function switchBackgrounds() {
   chrome.cookies.get({name:"background_set", url:"http://localhost:8080"}, function(cookie) {
-    if (cookie == null || parseInt(cookie.value) == 0) {
-      chrome.cookies.set({
-        name: "background_set",
-        value: "1",
-        url:"http://localhost:8080",
-        expirationDate: Date.now() + 126227808000  //4 years
-      }, function(cookie) {
-        console.log(cookie);
-        console.log("background_set cookie created w/ value 1");
-        alternateButton();
-        backgroundManager("1");
-      });
-      chrome.browserAction.setIcon({
-        path : "photos/_alternate/PIE-16.png"
-      });
-    }
-    else {
-      chrome.cookies.set({
-        name: "background_set",
-        value: "0",
-        url:"http://localhost:8080",
-        expirationDate: Date.now() + 126227808000  //4 years
-      }, function(cookie) {
-        console.log(cookie);
-        console.log("background_set cookie created w/ value 0");
-        standardButton();
-        backgroundManager("0");
-      });
-      chrome.browserAction.setIcon({
-        path : "photos/_standard/PIE-16.png"
-      });
-    }
+    if(cookie == null || parseInt(cookie.value) == 0) newCookie = "1";
+    else newCookie = "0";
+    chrome.cookies.set({
+      name: "background_set",
+      value: newCookie,
+      url:"http://localhost:8080",
+      expirationDate: Date.now() + 126227808000  //4 years
+    }, function(cookie) {
+      console.log(cookie);
+      console.log("background_set cookie created w/ value "+newCookie);
+      backgroundManager(newCookie);
+    });
+    chrome.browserAction.setIcon({
+      path : "photos/_standard/PIE-16.png"
+    });
   });
 };
 /**

@@ -1,0 +1,4 @@
+TODO:
+
+Generate API key and add to announcements and popup
+Check announcements

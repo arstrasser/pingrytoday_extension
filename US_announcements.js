@@ -1,23 +1,20 @@
 //Brendan Raimann
+//Edited by Alex Strasser
 
-$(document).ready(function(){
-  var feed = "https://www.pingry.org/rss.cfm?news=16";
+window.onload = (function(){
+  var feed = "http://compsci.pingry.k12.nj.us:3000/v1/news?api_key="+"eiJE660YnzsV4WvJSgkJzPkJVROYQAa4YN4Knl3P";
   var announcements = [];
 
-  $.get(feed, function (data) {
-    $(data).find("item").each(function () {
-      var el = $(this);
-        announcements.push([
-          el.find("title").text(),
-          el.find("description").text(),
-          el.find("pubDate").text()
-        ]);
-    });
-    clean();
-    execute();
-  });
-
-  //console.log(announcements);
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        annnouncements = JSON.parse(xhttp.responseText);
+        console.log(announcements);
+        execute();
+      }
+  };
+  xhttp.open("GET", feed, true);
+  xhttp.send();
 
 
   /**
@@ -84,17 +81,17 @@ $(document).ready(function(){
     a = [];
     for (var i = 0; i < announcements.length; i++) {
 
-      a[i] = document.createElement("div" + i);
+      a[i] = document.createElement("div");
 
       var title = document.createElement("div");
-      title.innerHTML = announcements[i][0];
-      title.id = "title";
+      title.innerHTML = announcements[i].title;
+      title.className = "title";
 
       a[i].appendChild(title);
 
       var description = document.createElement("div");
-      description.innerHTML = announcements[i][1];
-      description.id = "description";
+      description.innerHTML = announcements[i].description;
+      description.className = "description";
 
       a[i].appendChild(description);
 

@@ -1,0 +1,54 @@
+html {
+  height: 100%;
+   background: rgba(250, 250, 250, 0.95);
+   padding: 2px;
+   margin-bottom: 30vh;
+}
+
+.US_banner {
+  content: url("photos/US_banner.png");
+  background: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  border-radius: 5px;
+}
+
+.title {
+  font-family: "freight-macro-pro", serif;
+  font-size: 26px;
+  -webkit-font-smoothing: antialiased;
+  color: black;
+  font-weight: 550;
+  background-color: rgba(68, 121, 200, 0.3);
+  border-radius: 5px;
+  width: 100%;
+  margin: 0px;
+  text-align: center;
+}
+
+.description {
+  color: black !important;
+  font-family: "freight-sans-pro", serif !important;
+  font-size: 16px !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+a:-webkit-any-link {
+  color: -webkit-link;
+  cursor: auto;
+    text-decoration: underline;
+}
+
+hr {
+  margin: 20px 0px 20px 0px;
+}
+
+img {
+  margin: 10px 0px 20px 0px !important;
+  border-radius: 5px;
+  width: 100%;
+}
+
+p {
+  width: 100%;
+  color: black;
+}
